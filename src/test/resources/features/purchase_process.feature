@@ -1,4 +1,5 @@
 Feature: purchase process
+  I want to make a purchase
 
   Scenario: Add product to shopping cart
     Given  the user searches a product
