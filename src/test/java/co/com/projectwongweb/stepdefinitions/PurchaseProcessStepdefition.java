@@ -1,17 +1,22 @@
 package co.com.projectwongweb.stepdefinitions;
 
 import co.com.projectwongweb.models.Product;
+import co.com.projectwongweb.questions.TextOfElement;
 import co.com.projectwongweb.tasks.AddProductToCartTo;
 import co.com.projectwongweb.tasks.SearchProductTo;
+import co.com.projectwongweb.userinterfaces.MyCartPage;
+import co.com.projectwongweb.userinterfaces.ShoppingCartComponent;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.Cast;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.thucydides.core.annotations.Managed;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -44,7 +49,8 @@ public class PurchaseProcessStepdefition {
     }
 
     @Then("^the user sees added product$")
-    public void theUserSeesAddedProduct() {
+    public void theUserSeesAddedProduct(List<Product> listProduct) {
 
+        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(TextOfElement.asText(MyCartPage.PRODUCT_ADDED_NAME.of(listProduct.get(0).getName())), Matchers.equalTo(listProduct.get(0).getName())));
     }
 }

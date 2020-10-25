@@ -8,3 +8,5 @@ Feature: purchase process
       | name                           | quantity |
       | Papa Amarilla Huamantanga x kg | 3        |
     Then   the user sees added product
+      | name                           | quantity |
+      | Papa Amarilla Huamantanga x kg |          |
