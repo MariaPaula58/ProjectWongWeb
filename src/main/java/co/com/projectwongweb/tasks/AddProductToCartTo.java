@@ -1,27 +1,26 @@
 package co.com.projectwongweb.tasks;
 
-import co.com.projectwongweb.interactions.Alerts;
+import co.com.projectwongweb.interactions.Wait;
 import co.com.projectwongweb.models.Product;
 import co.com.projectwongweb.userinterfaces.ShoppingCartComponent;
 import co.com.projectwongweb.userinterfaces.ShoppingCartPage;
 import co.com.projectwongweb.userinterfaces.TopMenuComponent;
 import co.com.projectwongweb.utils.Convert;
-import cucumber.api.java.bs.A;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
-import org.openqa.selenium.WebDriver;
+import net.serenitybdd.screenplay.actions.Scroll;
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 
 
 public class AddProductToCartTo implements Task {
 
     private Product product;
-    private WebDriver driver;
     String quantity;
 
-    public AddProductToCartTo(Product product, WebDriver driver){
+    public AddProductToCartTo(Product product){
         this.product= product;
-        this.driver=driver;
     }
 
     @Override
@@ -37,10 +36,13 @@ public class AddProductToCartTo implements Task {
             );
         }
 
+
         actor.attemptsTo(
                 Click.on(ShoppingCartPage.BUTTON_ADD_PRODUCT),
+                Click.on(ShoppingCartPage.BUTTON_NO_THANKS),
                 Click.on(ShoppingCartPage.BUTTON_CLOSE_ALERT_PRODUCT_ADDED),
                 Click.on(TopMenuComponent.ICON_BUTTON_CART),
+                Wait.segundos(3),
                 Click.on(ShoppingCartComponent.BUTTON_SEE_CART)
         );
 

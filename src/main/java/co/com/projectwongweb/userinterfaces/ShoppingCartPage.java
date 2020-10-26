@@ -10,4 +10,5 @@ public class ShoppingCartPage {
 
     public static Target BUTTON_CLOSE_ALERT_PRODUCT_ADDED= Target.the("button close alert product added").locatedBy("//button[@class='modal-address__close font-icn cross']");
 
+    public static Target BUTTON_NO_THANKS = Target.the("button no thanks").locatedBy("//button[@id='onesignal-slidedown-cancel-button']");
 }
